@@ -10,6 +10,12 @@ In a terminal:
 
 `python scraper.py <SUBJECT> <COURSE ID>`
 
-For example, if you wanted to find out if CS 1114 can be transferred from another school, you would type: 
+If you want to see all courses in a certain subject, in the last line you can instead type:
+
+`python scraper.py <SUBJECT>`
+
+## Examples
 
 `python scraper.py CS 1114`
+
+`python scraper.py math`
