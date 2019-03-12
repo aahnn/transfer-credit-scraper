@@ -31,7 +31,7 @@ def check_school(school_code, requested_subject, requested_courseid):
 # Get a list of school codes, needed to check if a school has a certain course
 if len(sys.argv) < 2 or len(sys.argv) > 3:
     sys.exit('Usage: python scraper.py <SUBJECT> <COURSE ID>\n   or: python scraper.py <SUBJECT>')
-subject = sys.argv[1]
+subject = sys.argv[1].upper()
 if len(sys.argv) == 3:
     courseid = sys.argv[2]
 else:
