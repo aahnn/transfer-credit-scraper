@@ -3,9 +3,9 @@ import requests
 import re
 
 """Check if a certain school has the requested course"""
-def check_school(school_code, requested_course):
+def check_school(school_code, requested_subject, requested_course):
     post_req = requests.post('https://banweb.banner.vt.edu/ssb/prod/hzsktgid.P_ProcChoices', 
-        data={'inst_subj': 'CS', 'school_sbgi_code': school_code, school_code: 'SUBMIT'})
+        data={'inst_subj': requested_subject, 'school_sbgi_code': school_code, 'vt_btn': 'SUBMIT'})
     post_req.raise_for_status()
 
     post_soup = BeautifulSoup(post_req.content, 'html5lib')
@@ -21,5 +21,5 @@ codes = []
 for tag in schools:
     codes.append(tag.get('value'))
 
-
-
+# TODO: Add sys args functionality, e.g. scraper.py CS 1114
+# TODO: Finish check_school function
