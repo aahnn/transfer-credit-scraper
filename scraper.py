@@ -3,7 +3,7 @@ import requests
 import re
 
 """Check if a certain school has the requested course"""
-def check_school(school_code):
+def check_school(school_code, requested_course):
     post_req = requests.post('https://banweb.banner.vt.edu/ssb/prod/hzsktgid.P_ProcChoices', 
         data={'inst_subj': 'CS', 'school_sbgi_code': school_code, school_code: 'SUBMIT'})
     post_req.raise_for_status()
