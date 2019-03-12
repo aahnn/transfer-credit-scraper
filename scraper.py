@@ -2,16 +2,18 @@ from bs4 import BeautifulSoup
 import requests
 
 
-url = 'https://banweb.banner.vt.edu/ssb/prod/hzsktgid.P_DispTranGuide'
-# use this one?
-url2 = 'https://banweb.banner.vt.edu/ssb/prod/hzsktgid.P_ProcChoices'
+get_req = requests.get('https://banweb.banner.vt.edu/ssb/prod/hzsktgid.P_DispTranGuide')
+get_req.raise_for_status()
 
-req = requests.get(url)
-req.raise_for_status()
+get_soup = BeautifulSoup(get_req.content, 'html5lib')
+schools = get_soup.select('select[name="school_sbgi_code"] option')
 
 
 def check_school(school_code):
-    req = requests.post(url, data={'school_sbgi_code': str(school_code), 'submit': 'Find Courses'})
+    post_req = requests.post('https://banweb.banner.vt.edu/ssb/prod/hzsktgid.P_ProcChoices', 
+        data={'inst_subj': 'CS', 'school_sbgi_code': school_code, school_code: 'SUBMIT'})
+    post_req.raise_for_status()
 
-    soup = BeautifulSoup(req.content, 'html5lib')
-    soup = BeautifulSoup
+    post_soup = BeautifulSoup(post_req.content, 'html5lib')
+
+check_school(3)
