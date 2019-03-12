@@ -27,6 +27,7 @@ def check_school(school_code, requested_subject, requested_courseid):
 
         return subject_courses
 
+
 """Start Script"""
 # Get a list of school codes, needed to check if a school has a certain course
 if len(sys.argv) < 2 or len(sys.argv) > 3:
@@ -49,6 +50,3 @@ for tag in schools:
 for school_code, school_name in school_codes.items():
     time.sleep(5)
     print('{}: {}'.format(school_name, check_school(school_code, subject, courseid)))
-
-
-# TODO: Add sys args functionality, e.g. scraper.py CS 1114.. make this case insensitive, make it work with only subject arg
